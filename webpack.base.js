@@ -1,4 +1,5 @@
 var path = require('path');
+
 module.exports = {
     entry: {
         vendor: ['react', 'react-dom', 'prop-types', 'react-bind-handlers', 'react-router'],

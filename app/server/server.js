@@ -13,9 +13,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+// Trimming env variable for global use
+process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : process.env.NODE_ENV;
+
 // Webpack Dev Middleware
-if (process.env.NODE_ENV === 'dev') {    
-    webpackConfig = require('../webpack.config.js')(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'dev') {
+    webpackConfig = require('../../webpack.config.js')(process.env.NODE_ENV);
     compiler = require('webpack')(webpackConfig);
 
     app.use(webpackMiddleware(compiler, {

@@ -1,8 +1,16 @@
 module.exports = function(env) {
-    console.log('============= ', env);
-    return require('./webpack.base.js');
+    switch (env) {
 
-    // if (env === 'prod') {
-    // } else {
-    // }
+        case 'dev':
+            return require('./webpack.dev');
+        
+        case 'build':
+            return require('./webpack.build');
+
+        case 'prod':
+            return require('./webpack.prod')
+        
+        default:
+            return require('./webpack.build');
+    }
 }

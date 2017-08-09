@@ -1,4 +1,6 @@
 var path = require('path');
+var webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -6,7 +8,7 @@ module.exports = {
         main: path.join(__dirname, 'app', 'client', 'js', 'main.js')
     },
     output: {
-        filename: '[name].js',
+        filename: '[name][hash].js',
         path: path.resolve(__dirname, 'app', 'client', 'dist'),
         publicPath: '/'
     },
@@ -18,6 +20,12 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'app', 'client')
     },
+    plugins: [
+        new CleanWebpackPlugin(['./app/client/dist', './app/client/index.html']),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor'
+        })
+    ],
     module: {
         rules: [{
             test: /\.js$/,

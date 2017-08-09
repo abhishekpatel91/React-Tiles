@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-
 module.exports = {
     entry: {
         vendor: ['react', 'react-dom', 'prop-types', 'react-bind-handlers', 'react-router'],

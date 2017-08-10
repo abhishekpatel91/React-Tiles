@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => (
     <header className="row">
         <div className="col-lg-2 col-md-2 col-xs-3">
-            <Link to="/home">
+            <Link to="/">
                 <img src="/images/logo.jpg" alt="logo" />
             </Link>
         </div>

@@ -8,6 +8,7 @@ var express = require('express'),
     compiler;
 
 var app = express();
+var dataAPI = require('./router');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,17 +34,28 @@ if (process.env.NODE_ENV === 'dev') {
     }));
 } else {
     // a wildcard route to index.html
-    // app.get('/*', function(request, response) {
-    //     response.sendFile(path.join(__dirname + '/../client/index.html'));
-    // });
-}
-
-app.get('/*', function(request, response) {
+    app.get('/*', function(request, response) {
         response.sendFile(path.join(__dirname + '/../client/index.html'));
     });
+}
+
+app.use('/api', dataAPI);
 
 app.get('/server', function(request, response) {
-    response.send('Content came from server!');
+    var dummyData = [{
+        title: 'apple',
+        id: 1,
+        imgURL: '/images/logo.jpg'
+    },{
+        title: 'banana',
+        id: 12,
+        imgURL: '/images/logo.jpg'
+    },{
+        title: 'carrot',
+        id: 122,
+        imgURL: '/images/logo.jpg'
+    }];
+    response.json(dummyData);
 });
 
 app.listen(9000, function() {

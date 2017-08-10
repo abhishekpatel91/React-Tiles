@@ -32,7 +32,7 @@ class Search extends React.Component {
                     <input
                         type="text"
                         placeholder="Search"
-                        autoFocus
+                        autoComplete="off"
                         id="search"
                         name="search"
                         className="form-control"

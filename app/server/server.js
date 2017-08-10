@@ -21,6 +21,7 @@ process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : proc
 
 // Serve Static Content
 app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/../client/'));
 app.use('/dist', express.static(__dirname + '/../client/dist'));
 app.use('/css', express.static(__dirname + '/../client/css'));
 
@@ -33,9 +34,13 @@ if (process.env.NODE_ENV === 'dev') {
         publicPath: webpackConfig.output.publicPath
     }));
 } else {
-    // a wildcard route to index.html
-    app.get('/*', function(request, response) {
-        response.sendFile(path.join(__dirname + '/../client/index.html'));
+    // a wildcard route to index.html for non xhr requests
+    app.get('/*', function(request, response, next) {
+        if (request.xhr) {
+            next();
+        } else {
+            response.sendFile(path.join(__dirname + '/../client/index.html'));
+        }
     });
 }
 

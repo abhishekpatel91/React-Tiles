@@ -13,10 +13,6 @@ img {
 }
 
 footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     padding: 15px;
 }
 
@@ -27,7 +23,7 @@ footer {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
+    z-index: 100;
 }
 
 .loader {
@@ -40,4 +36,22 @@ footer {
 
 .loading .loader {
     display: block;
+}
+
+.tile-details .edit-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000
+}
+
+.tile-details .edit-modal .modal-data {
+    background: #fff;
+    padding: 10px;
+    width: 80%;
+    margin: 30px auto;
+    border-radius: 5px;
 }

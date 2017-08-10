@@ -20,6 +20,7 @@ function makeAjax(url, method = 'GET', data = null) {
             }
         }
         xhr.open(method, url, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send(data);
     });
 }

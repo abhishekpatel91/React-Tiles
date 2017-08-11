@@ -6,14 +6,51 @@
 
 body {
     min-height: 100vh;
+    background: #000 url('/images/background.jpg');
+    color: #fff;
 }
 
 img {
     width: 100%;
 }
 
+a {
+    display: inline-block;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+header {
+    margin-bottom: 35px;
+}
+
+header .logo {
+    padding: 10px;
+    width: 100px;
+    border-radius: 40%;
+    overflow: hidden;
+}
+
+header h1 {
+    margin: 0;
+}
+
 footer {
     padding: 15px;
+    font-size: 14px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #ccc;
+    color: #000;
+}
+
+main {
+    margin-bottom: 70px;
 }
 
 .loading {
@@ -38,6 +75,25 @@ footer {
     display: block;
 }
 
+.search-form {
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+.search-form .form-group {
+    float: right;
+    margin: 0 0 0 5px;
+    position: relative;
+}
+
+.search-form .form-group .cancel {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    background: #fff;
+    border: none;
+}
+
 .tile-details .edit-modal {
     position: fixed;
     left: 0;
@@ -50,8 +106,59 @@ footer {
 
 .tile-details .edit-modal .modal-data {
     background: #fff;
-    padding: 10px;
-    width: 80%;
+    padding: 25px;
+    width: 90%;
     margin: 30px auto;
     border-radius: 5px;
+    color: #000;
+}
+
+.tile-details .edit-modal .modal-data h2 {
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+}
+
+.tile-details .edit-modal .modal-data button {
+    margin: 0 5px;
+}
+
+.tiles article {
+    margin-bottom: 20px;
+}
+
+.tiles article .text-container {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-weight: 700;
+}
+
+.tile-details .detail-group {
+    margin-bottom: 10px;
+}
+
+.tile-details .detail-group .detail-key {
+    float: left;
+    width: 20%;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.tile-details .detail-group .detail-value {
+    float: left;
+    width: 100%;
+    font-style: italic;
+    font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+    .tile-details .detail-group .detail-value {
+        width: 80%;
+    }
+
+    .tile-details .edit-modal .modal-data {
+        width: 50%;
+    }
 }

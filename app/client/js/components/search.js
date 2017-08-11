@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { object } from 'prop-types';
 
 class Search extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class Search extends React.Component {
     componentWillMount() {
         const { match } = this.props;
         if (match && match.params.searchQuery) {
-            this.setState({ searchStr:  match.params.searchQuery })
+            this.setState({ searchStr:  match.params.searchQuery });
         }
     }
     handleInpChng(event) {
@@ -26,12 +27,15 @@ class Search extends React.Component {
     }
     render() {
         return (
-            <form className="search-form" onSubmit={this.submitSearch}>
+            <form className="search-form clearfix" onSubmit={this.submitSearch}>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-success">Search</button>
+                </div>
                 <div className="form-group">
                     <label htmlFor="search" className="sr-only">Search</label>
                     <input
                         type="text"
-                        placeholder="Search"
+                        placeholder="Search Games"
                         autoComplete="off"
                         id="search"
                         name="search"
@@ -39,12 +43,15 @@ class Search extends React.Component {
                         value={this.state.searchStr}
                         onChange={this.handleInpChng}
                     />
-                    <button type="button" className={this.state.searchStr ? 'btn btn-default' : 'hide'} onClick={this.resetSearchStr}>X</button>
-                    <button type="submit" className="btn btn-success">Search</button>
+                    <button type="button" className={this.state.searchStr ? 'btn btn-default cancel' : 'hide'} onClick={this.resetSearchStr}>X</button>
                 </div>
             </form>
         );
     }
 }
 
-export default withRouter((props) => <Search {...props}/>)
+Search.propTypes = {
+    history: object,
+};
+
+export default withRouter((props) => <Search {...props}/>);

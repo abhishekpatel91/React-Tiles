@@ -6,7 +6,7 @@ import Header from './header';
 import Footer from './footer';
 import Body from './body';
 
-// private method for xhr request
+// method for ajax, to be used globally
 const xhr = new XMLHttpRequest();
 function makeAjax(url, method = 'GET', data = null) {
     return new Promise((resolve, reject) => {
@@ -18,17 +18,18 @@ function makeAjax(url, method = 'GET', data = null) {
                     resolve(JSON.parse(xhr.responseText));
                 }
             }
-        }
+        };
         xhr.open(method, url, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.send(data);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(data));
     });
 }
 
 export default class Container extends React.Component {
     render() {
         return (
-            <Router forceRefresh={false}>
+            <Router forceRefresh={true}>
                 <div>
                     <Header/>
                     <Body
@@ -37,6 +38,6 @@ export default class Container extends React.Component {
                     <Footer/>
                 </div>
             </Router>
-        )
+        );
     }
 }

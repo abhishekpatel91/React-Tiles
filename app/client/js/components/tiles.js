@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import appConfig from '../config';
+import { func, string, object } from 'prop-types';
 
 const Tile = (props) => (
     <article className="col-xs-6 col-md-4 col-lg-3">
@@ -33,13 +34,24 @@ export default class Tiles extends React.Component {
             } else {
                 this.setState({ tilesData: result });
             }
+        })
+        .catch(() => {
+            alert('Problems with the server. Try again later!');
         });
     }
     render() {
+        const results = this.state.tilesData.length ? (this.state.tilesData.map((data) => <Tile key={data.id} {...data}/>)) : (<h2 className="text-center">No Results Found</h2>);
         return (
             <section className="row tiles">
-                {this.state.tilesData.map((data) => <Tile key={data.id} {...data}/>)}
+                {results}
             </section>
         );
     }
 }
+
+Tiles.propTypes = {
+    makeAjax: func,
+    match: object,
+    imgURL: string,
+    title: string,
+};

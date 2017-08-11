@@ -1,17 +1,18 @@
-var path = require('path');
+const path = require('path');
 
 // Initialise express and webpack instances
-var express = require('express'),
+const express = require('express'),
     webpackMiddleware = require("webpack-dev-middleware"),
-	bodyParser = require('body-parser'),
-    webpackConfig,
+	bodyParser = require('body-parser');
+    
+let webpackConfig,
     compiler;
 
-var app = express();
-var dataAPI = require('./router');
+const app = express();
+const dataAPI = require('./router');
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -21,7 +22,6 @@ process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : proc
 
 // Serve Static Content
 app.use(express.static(__dirname + '/assets'));
-app.use(express.static(__dirname + '/../client/'));
 app.use('/dist', express.static(__dirname + '/../client/dist'));
 app.use('/css', express.static(__dirname + '/../client/css'));
 
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'dev') {
     }));
 } else {
     // a wildcard route to index.html for non xhr requests
-    app.get('/*', function(request, response, next) {
+    app.get('/*', (request, response, next) => {
         if (request.xhr) {
             next();
         } else {
@@ -46,23 +46,6 @@ if (process.env.NODE_ENV === 'dev') {
 
 app.use('/api', dataAPI);
 
-app.get('/server', function(request, response) {
-    var dummyData = [{
-        title: 'apple',
-        id: 1,
-        imgURL: '/images/logo.jpg'
-    },{
-        title: 'banana',
-        id: 12,
-        imgURL: '/images/logo.jpg'
-    },{
-        title: 'carrot',
-        id: 122,
-        imgURL: '/images/logo.jpg'
-    }];
-    response.json(dummyData);
-});
-
-app.listen(9000, function() {
+app.listen(9000, () => {
 	console.log('Server listening to 9000 port.');
 });

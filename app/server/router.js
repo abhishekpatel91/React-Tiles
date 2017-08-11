@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var controller = require('./controller');
+const express = require('express');
+const router = express.Router();
+const controller = require('./controller');
 
 router.get('/tiles', (request, response) => {
     controller.getTiles(request, response);
@@ -8,6 +8,10 @@ router.get('/tiles', (request, response) => {
 
 router.get('/details/:id', (request, response) => {
     controller.getTileDetails(request, response);
+});
+
+router.post('/editDetails/:id', (request, response) => {
+    controller.editTileDetails(request, response);
 });
 
 module.exports = router;

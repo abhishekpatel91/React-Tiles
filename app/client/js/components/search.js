@@ -23,6 +23,7 @@ class Search extends React.Component {
         this.setState({ searchStr: '' });
     }
     submitSearch(event) {
+        event.preventDefault();
         this.props.history.push(`/search/${this.state.searchStr}`);
     }
     render() {

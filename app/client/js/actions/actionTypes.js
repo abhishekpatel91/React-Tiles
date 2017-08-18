@@ -1,0 +1,11 @@
+export const FETCH_TILES = 'fetchTiles';
+export const UPDATE_TILES = 'updateTiles';
+export const EDIT_TILE = 'editTile';
+export const POST_EDITED_TILE = 'postEditedtile';
+export const FETCH_TILE_DETAILS = 'fetchTileDetails';
+export const UPDATE_TILE_DETAILS = 'updateTileDetails';
+export const UPDATE_SEARCH_STR = 'updateSearchStr';
+export const RESET_SEARCH_STR = 'resetSearchStr';
+export const SHOW_LOADER = 'showLoader';
+export const HIDE_LOADER = 'hideLoader';
+export const FETCH_ERROR = 'fetchError';

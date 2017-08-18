@@ -8,10 +8,10 @@ import TileDetails from './tileDetails';
 const Body = (props) => (
     <main>
         <Switch>
-            <Route exact path="/" component={()=><Home {...props}/>}/>
-            <Route exact path="/search/" component={(routeProps) => <Home {...props} {...routeProps}/>}/>
-            <Route path="/search/:searchQuery" component={(routeProps) => <Home {...props} {...routeProps}/>}/>
-            <Route path="/detail/:id" component={(routeProps) => <TileDetails {...routeProps} {...props}/>}/>
+            <Route exact path="/" component={(routeProps) => <Home {...routeProps}/>}/>
+            <Route exact path="/search/" component={(routeProps) => <Home {...routeProps}/>}/>
+            <Route path="/search/:searchQuery" component={(routeProps) => <Home {...routeProps}/>}/>
+            <Route path="/detail/:id" component={TileDetails}/>
         </Switch>
     </main>
 );

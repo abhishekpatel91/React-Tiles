@@ -4,7 +4,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         vendor: ['react', 'react-dom', 'prop-types', 'react-bind-handlers', 'react-router'],
-        main: path.join(__dirname, 'app', 'client', 'js', 'main.js')
+        main: ['babel-polyfill', path.join(__dirname, 'app', 'client', 'js', 'main.js')]
     },
     output: {
         filename: '[name][hash].js',

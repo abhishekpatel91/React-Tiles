@@ -5,30 +5,19 @@ import { object } from 'prop-types';
 class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { searchStr: '' };
-        this.handleInpChng = this.handleInpChng.bind(this);
-        this.resetSearchStr = this.resetSearchStr.bind(this);
-        this.submitSearch = this.submitSearch.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentWillMount() {
-        const { match } = this.props;
-        if (match && match.params.searchQuery) {
-            this.setState({ searchStr:  match.params.searchQuery });
-        }
+    handleChange(event) {
+        this.props.updateSearchStr(event.target.value);
     }
-    handleInpChng(event) {
-        this.setState({ searchStr: event.target.value });
-    }
-    resetSearchStr() {
-        this.setState({ searchStr: '' });
-    }
-    submitSearch(event) {
+    handleSubmit(event) {
         event.preventDefault();
-        this.props.history.push(`/search/${this.state.searchStr}`);
+        this.props.history.push(`/search/${this.props.searchQuery}`);
     }
     render() {
         return (
-            <form className="search-form clearfix" onSubmit={this.submitSearch}>
+            <form className="search-form clearfix" onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <button type="submit" className="btn btn-success">Search</button>
                 </div>
@@ -41,10 +30,16 @@ class Search extends React.Component {
                         id="search"
                         name="search"
                         className="form-control"
-                        value={this.state.searchStr}
-                        onChange={this.handleInpChng}
+                        value={this.props.searchQuery}
+                        onChange={this.handleChange}
                     />
-                    <button type="button" className={this.state.searchStr ? 'btn btn-default cancel' : 'hide'} onClick={this.resetSearchStr}>X</button>
+                    <button
+                        type="button"
+                        className={this.props.searchQuery ? 'btn btn-default cancel' : 'hide'}
+                        onClick={this.props.resetSearchStr}
+                    >
+                        X
+                    </button>
                 </div>
             </form>
         );

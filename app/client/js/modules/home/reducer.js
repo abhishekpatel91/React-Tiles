@@ -1,10 +1,9 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from './actionTypes';
 
 const initialState = {
     tiles: [],
     searchQuery: '',
-    tileDetails: {},
-    isLoading: false,
+    filterBy: ''
 };
 
 function _updateTiles(state, action) {
@@ -19,16 +18,8 @@ function _resetSearchStr(state, action) {
     return Object.assign({}, state, { searchQuery: '' });
 }
 
-function _updateTileDetails(state, action) {
-    return Object.assign({}, state, { tileDetails: action.payload });
-}
-
-function _showLoader(state) {
-    return Object.assign({}, state, { isLoading: true });
-}
-
-function _hideLoader(state) {
-    return Object.assign({}, state, { isLoading: false });
+function _updateFilter(state, action) {
+    return Object.assign({}, state, { filterBy: action.payload });
 }
 
 export default function(state = initialState, action) {
@@ -42,18 +33,9 @@ export default function(state = initialState, action) {
         
         case actionTypes.RESET_SEARCH_STR:
             return _resetSearchStr(state, action);
-        
-        case actionTypes.UPDATE_TILE_DETAILS:
-            return _updateTileDetails(state, action);
 
-        case actionTypes.EDIT_TILE:
-            return _updateTileDetails(state, action);
-        
-        case actionTypes.SHOW_LOADER:
-            return _showLoader(state);
-
-        case actionTypes.HIDE_LOADER:
-            return _hideLoader(state);
+        case actionTypes.UPDATE_FILTER:
+            return _updateFilter(state, action);
 
         default:
             return state;

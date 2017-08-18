@@ -16,6 +16,9 @@ module.exports = {
         reasons: true,
         chunks: true
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     devServer: {
         contentBase: path.join(__dirname, 'app', 'client')
     },
@@ -27,7 +30,7 @@ module.exports = {
     ],
     module: {
         rules: [{
-            test: /\.js$/,
+            test: [/\.js$/, /\.jsx$/],
             exclude: /(node_modules)/,
             use: {
                 loader: 'babel-loader',

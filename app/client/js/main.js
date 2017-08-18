@@ -4,11 +4,11 @@ import Promise from 'promise-polyfill';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import tilesReducer from './reducers/tilesReducer';
-import tilesSaga from './saga/tilesSaga';
+import reducer from './reducer';
+import saga from './saga';
 
 // Components
-import App from './components/app';
+import App from './modules/app/index';
 
 // promise cross browser fix
 if (!window.Promise) {
@@ -16,8 +16,8 @@ if (!window.Promise) {
 }
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(tilesReducer, applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(tilesSaga);
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(saga);
 
 ReactDOM.render(
     <Provider store={store}>

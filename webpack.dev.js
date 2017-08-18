@@ -7,7 +7,7 @@ module.exports = merge(baseConfig, {
         new HtmlWebpackPlugin({
             filename:'index.html',
             title: 'Tiles',
-            template: './app/client/template/landing.html'
+            template: './app/client/template/index.html'
         })
     ]
 });

@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
 import { func, object } from 'prop-types';
 
 // Components
 import EditDetails from './editDetail';
 
-class TileDetails extends React.Component {
+export default class TileDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isModalOpen: false };
@@ -73,14 +71,3 @@ class TileDetails extends React.Component {
 TileDetails.propTypes = {
     match: object,
 };
-
-const mapStateToProps = (store) => ({
-    tileDetails: store.tileDetails,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    fetchTileDetails: (id) => dispatch(actions.fetchTileDetails(id)),
-    postEditedTile: (editedTile) => dispatch(actions.postEditedTile(editedTile)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TileDetails);

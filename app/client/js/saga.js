@@ -4,6 +4,7 @@ import { makeAjax } from './utility/global';
 
 import * as homeActionTypes from './modules/home/actionTypes';
 import * as detailsActionTypes from './modules/details/actionTypes';
+import * as loaderActions from './modules/loader/actions';
 
 function* fetchTiles(action) {
     const tiles = yield makeAjax(appConfig.tilesURL);
@@ -21,13 +22,13 @@ function* postEditedTile(action) {
 }
 
 function* doWithLoader(callback, action) {
-    // yield put(actions.showLoader());
+    yield put(loaderActions.showLoader());
     yield* callback(action);
-    // yield put(actions.hideLoader());
+    yield put(loaderActions.hideLoader());
 }
 
 export default function* () {
-    yield takeEvery(homeActionTypes.FETCH_TILES, fetchTiles);
-    yield takeEvery(detailsActionTypes.FETCH_TILE_DETAILS, fetchTileDetails);
-    yield takeEvery(detailsActionTypes.POST_EDITED_TILE, postEditedTile);
+    yield takeEvery(homeActionTypes.FETCH_TILES, doWithLoader, fetchTiles);
+    yield takeEvery(detailsActionTypes.FETCH_TILE_DETAILS, doWithLoader, fetchTileDetails);
+    yield takeEvery(detailsActionTypes.POST_EDITED_TILE, doWithLoader, postEditedTile);
 }

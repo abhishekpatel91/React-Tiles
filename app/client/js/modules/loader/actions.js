@@ -1,4 +1,4 @@
-import actionTypes from './actionTypes';
+import * as actionTypes from './actionTypes';
 
 export function showLoader() {
     return { type: actionTypes.SHOW_LOADER };

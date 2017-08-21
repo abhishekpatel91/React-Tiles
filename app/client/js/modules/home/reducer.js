@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 const initialState = {
     tiles: [],
     searchQuery: '',
-    filterBy: ''
+    filterBy: '',
 };
 
 function _updateTiles(state, action) {

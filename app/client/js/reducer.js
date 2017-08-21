@@ -7,4 +7,4 @@ export default combineReducers({
   home: homeReducer,
   details: detailsReducer,
   loader: loaderReducer,
-})
+});

@@ -31,17 +31,14 @@ module.exports = {
     module: {
         rules: [{
             test: [/\.js$/, /\.jsx$/],
-            exclude: /(node_modules)/,
+            exclude: [/(node_modules)/, /\.test\.js$/],
             use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['es2015', 'react']
-                }
+                loader: 'babel-loader'
             }
         }, {
             enforce: 'pre',
             test: /\.js$/,
-            exclude: /(node_modules)/,
+            exclude: [/(node_modules)/, /\.test\.js$/],
             loader: 'eslint-loader'
         }]
     }

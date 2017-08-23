@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import * as actions from './actions';
+import getFilteredTiles from './selector';
 import Home from './home';
 
 const filteredTile = (data, query) => {
@@ -8,7 +9,7 @@ const filteredTile = (data, query) => {
 };
 
 const mapStateToProps = (store) => ({
-    tiles: filteredTile(store.home.tiles, store.home.filterBy),
+    tiles: getFilteredTiles(store.home),
     searchQuery: store.home.searchQuery,
 });
 

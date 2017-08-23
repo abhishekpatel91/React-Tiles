@@ -1,10 +1,10 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import appConfig from './utility/config';
-import { makeAjax } from './utility/global';
+import appConfig from '../utility/config';
+import { makeAjax } from '../utility/global';
 
-import * as homeActionTypes from './modules/home/actionTypes';
-import * as detailsActionTypes from './modules/details/actionTypes';
-import * as loaderActions from './modules/loader/actions';
+import * as homeActionTypes from '../modules/home/actionTypes';
+import * as detailsActionTypes from '../modules/details/actionTypes';
+import * as loaderActions from '../modules/loader/actions';
 
 function* fetchTiles(action) {
     const tiles = yield makeAjax(appConfig.tilesURL);

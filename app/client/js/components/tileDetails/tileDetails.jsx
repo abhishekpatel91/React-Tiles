@@ -4,7 +4,7 @@ import { func, object } from 'prop-types';
 // Components
 import EditDetails from './editDetail';
 
-export default class TileDetails extends React.Component {
+export default class TileDetails extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = { isModalOpen: false };

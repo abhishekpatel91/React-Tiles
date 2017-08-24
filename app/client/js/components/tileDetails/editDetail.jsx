@@ -1,7 +1,7 @@
 import React from 'react';
 import { object } from 'prop-types';
 
-export default class TileDetails extends React.Component {
+export default class TileDetails extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {

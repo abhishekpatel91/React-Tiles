@@ -125,6 +125,7 @@ main {
 
 .tiles article {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .tiles article .text-container {

@@ -7,17 +7,15 @@ import Footer from '../../components/footer/footer';
 import Loader from '../loader/index';
 import Content from './content';
 
-export default class App extends React.Component {
-    render() {
-        return (
-            <Router>
-                <div>
-                    <Header/>
-                    <Content/>
-                    <Loader/>
-                    <Footer/>
-                </div>
-            </Router>
-        );
-    }
-}
+const App = () => (
+    <Router>
+        <div>
+            <Header/>
+            <Content/>
+            <Loader/>
+            <Footer/>
+        </div>
+    </Router>
+);
+
+export default App;

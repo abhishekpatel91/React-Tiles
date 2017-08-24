@@ -4,7 +4,7 @@ import React from 'react';
 import Search from '../../components/search/search';
 import Tiles from '../../components/tiles/tiles';
 
-export default class Home extends React.Component {
+export default class Home extends React.PureComponent {
     constructor(props) {
         super(props);
         const { match, updateSearchStr, resetSearchStr, updateFilter } = props;

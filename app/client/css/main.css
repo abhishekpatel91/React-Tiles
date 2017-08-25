@@ -6,7 +6,7 @@
 
 body {
     min-height: 100vh;
-    background: #000 url('/images/background.jpg') no-repeat;
+    background: #fff url('/images/background.jpg') no-repeat;
     background-size: cover;
 }
 

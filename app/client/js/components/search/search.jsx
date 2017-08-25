@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { object } from 'prop-types';
+import { object, func, string } from 'prop-types';
 
 class Search extends React.PureComponent {
     constructor(props) {
@@ -48,6 +48,9 @@ class Search extends React.PureComponent {
 
 Search.propTypes = {
     history: object,
+    updateSearchStr: func,
+    resetSearchStr: func,
+    searchQuery: string,
 };
 
 export default withRouter((props) => <Search {...props}/>);

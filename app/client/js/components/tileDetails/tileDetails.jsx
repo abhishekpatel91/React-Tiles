@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, object } from 'prop-types';
+import { func, object, shape, arrayOf, string, number } from 'prop-types';
 
 // Components
 import EditDetails from './editDetail';
@@ -70,4 +70,13 @@ export default class TileDetails extends React.PureComponent {
 
 TileDetails.propTypes = {
     match: object,
+    postEditedTile: func,
+    tileDetails: shape({
+        console: arrayOf(string),
+        desc: string,
+        title: string,
+        imdb: string,
+        year: string,
+        id: number
+    })
 };

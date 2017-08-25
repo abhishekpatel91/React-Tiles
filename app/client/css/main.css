@@ -6,8 +6,8 @@
 
 body {
     min-height: 100vh;
-    background: #000 url('/images/background.jpg');
-    color: #fff;
+    background: #000 url('/images/background.jpg') no-repeat;
+    background-size: cover;
 }
 
 img {
@@ -45,7 +45,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background: #ccc;
+    background: #999;
     color: #000;
 }
 
@@ -128,6 +128,19 @@ main {
     text-align: center;
 }
 
+.tiles article a {
+    box-shadow: 0 0 3px #fff;
+}
+
+.tiles article a:hover {
+    box-shadow: 0 0 20px #000;
+}
+
+.tiles article a:focus {
+    box-shadow: 0 0 20px #000;
+    border: none;
+}
+
 .tiles article .text-container {
     text-align: center;
     padding: 10px;
@@ -152,6 +165,7 @@ main {
     width: 100%;
     font-style: italic;
     font-size: 16px;
+    font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {

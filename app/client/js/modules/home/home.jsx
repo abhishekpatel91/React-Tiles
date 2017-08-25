@@ -1,4 +1,5 @@
 import React from 'react';
+import { func, string, object } from 'prop-types';
 
 // Components
 import Search from '../../components/search/search';
@@ -36,3 +37,12 @@ export default class Home extends React.PureComponent {
         );
     }
 }
+
+Home.propTypes = {
+    match: object,
+    updateSearchStr: func,
+    resetSearchStr: func,
+    updateFilter: func,
+    fetchTiles: func,
+    searchQuery: string,
+};

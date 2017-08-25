@@ -1,4 +1,5 @@
 const path = require('path');
+const open = require("open");
 
 // Initialise express and webpack instances
 const express = require('express'),
@@ -48,4 +49,5 @@ app.use('/api', dataAPI);
 
 app.listen(9000, () => {
 	console.log('Server listening to 9000 port.');
+    open('http://localhost:9000');
 });

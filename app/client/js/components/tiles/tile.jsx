@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { string, number } from 'prop-types';
 
 const Tile = (props) => (
     <article className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -13,5 +14,11 @@ const Tile = (props) => (
         </Link>
     </article>
 );
+
+Tile.propTypes = {
+    id: number,
+    imgURL: string,
+    title: string,
+};
 
 export default Tile;

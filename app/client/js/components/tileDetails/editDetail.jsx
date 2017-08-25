@@ -1,5 +1,5 @@
 import React from 'react';
-import { object } from 'prop-types';
+import { func, bool } from 'prop-types';
 
 export default class TileDetails extends React.PureComponent {
     constructor(props) {
@@ -63,5 +63,7 @@ export default class TileDetails extends React.PureComponent {
 }
 
 TileDetails.propTypes = {
-    tileDetails: object,
+    closeEditWindow: func,
+    updateDetails: func,
+    isModalOpen: bool
 };

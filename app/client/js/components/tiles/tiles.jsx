@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, object } from 'prop-types';
+import { arrayOf, object } from 'prop-types';
 
 // components
 import Tile from './tile';
@@ -15,8 +15,4 @@ export default class Tiles extends React.PureComponent {
     }
 }
 
-Tiles.propTypes = {
-    match: object,
-    imgURL: string,
-    title: string,
-};
+Tiles.propTypes = { tiles: arrayOf(object) };
